@@ -4,7 +4,7 @@ export default {
 
   // Saves an article to the database
   saveScore: function(score) {
-    return axios.post("/api/score", score);
+    return axios.post("/routes/api/score", score);
     console.log(score);
   }
 };

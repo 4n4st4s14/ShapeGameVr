@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require('../models');
 
 module.exports = {
 
@@ -12,13 +12,13 @@ module.exports = {
   },
 
   create: function(req, res) {
-    const article = {
-      _id: req.body._id,
+    const score = {
+
       score: req.body.score,
-    
+
     };
     db.Score
-      .create(article)
+      .create(score)
       .then(dbScore => res.json(dbScore))
       .catch(err => res.status(422).json(err));
   },

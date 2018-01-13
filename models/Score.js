@@ -11,7 +11,7 @@ const Score = new Schema({
 }, { _id: false });
 
 // This creates our model from the above schema, using mongoose's model method
-const score = mongoose.model("score", score);
+const score = mongoose.model("score", Score);
 
 // Export the Article model
 module.exports = score;
