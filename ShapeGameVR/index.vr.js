@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, AppRegistry, StyleSheet, AsyncStorage } from 'react-vr';
 import Shape, { shapes } from './vr/Components/Shape';
-import API from "./utils.API";
+import API from "./utils/API";
 
 
 class ShapeGame extends Component{
