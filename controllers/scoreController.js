@@ -4,9 +4,8 @@ module.exports = {
 
 
   findAll: function(req, res) {
-    db.Score
+    db.score
       .find(req.query)
-      .sort({ date: -1 })
       .then(dbScore => res.json(dbScore))
       .catch(err => res.status(422).json(err));
   },
@@ -17,7 +16,7 @@ module.exports = {
       score: req.body.score,
 
     };
-    db.Score
+    db.score
       .create(score)
       .then(dbScore => res.json(dbScore))
       .catch(err => res.status(422).json(err));
