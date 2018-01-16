@@ -28,11 +28,11 @@ class ShapeGame extends Component{
   }
 
 componentWillMount(){
-  this.ref= base.syncState(`/vr/`,
+  this.ref= base.syncState(`/vrtest-6992d`,
   {
     context: this,
     state
-  })
+  });
 }
 
 componentWillUnmount(){
