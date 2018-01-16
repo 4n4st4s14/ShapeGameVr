@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, AppRegistry, StyleSheet, AsyncStorage } from 'react-vr';
+import { View, Text, AppRegistry, StyleSheet, AsyncStorage, asset, Sound } from 'react-vr';
 import Shape, { shapes } from './vr/Components/Shape';
 import API from "./utils/API";
-
+import Button from './song.js';
+import base from './base.js';
 
 class ShapeGame extends Component{
   constructor(){
@@ -13,7 +14,30 @@ class ShapeGame extends Component{
       score: 0,
       specialIndex: 0
     }
+
+    this.styles = StyleSheet.create({
+    menu: {
+        flex: 1,
+        flexDirection: 'column',
+        width: 1,
+        alignItems: 'stretch',
+        transform: [{translate: [0.5, 0.5, -4]}],
+        }
+
+  });
   }
+
+componentWillMount(){
+  this.ref= base.syncState(`/vr/`,
+  {
+    context: this,
+    state
+  })
+}
+
+componentWillUnmount(){
+  base.removeBinding(this.ref);
+}
 
 componentDidMount(){
 
@@ -23,6 +47,7 @@ componentDidMount(){
   })
   this.newGameSet();
 }
+
 
 
 pickShape(shapeIndex){
@@ -67,6 +92,15 @@ newGameSet(){
     return(
       <View style={styles.game}>
         <Text style={styles.text}>Find the Odd One Out!</Text>
+<View style={ this.styles.menu }>
+  <Button  />
+
+    <Sound
+      autoPlay source={{mp3: asset('ForgiveVocalSlowed.mp3')}}
+    />
+
+</View>
+
         <Text style={styles.text}>{this.state.score}</Text>
       {
         this.state.gameShapes.map((shape, index) =>{
