@@ -5,6 +5,8 @@ import API from "./utils/API";
 import Button from './song.js';
 import {init as firebaseInit} from './base';
 
+import Login from './vr/Components/Login';
+
 import {addSection} from './base';
 import {saveState} from './base';
 
@@ -18,16 +20,6 @@ class ShapeGame extends Component{
       specialIndex: 0
     }
 
-    this.styles = StyleSheet.create({
-    menu: {
-        flex: 1,
-        flexDirection: 'column',
-        width: 1,
-        alignItems: 'stretch',
-        transform: [{translate: [0.5, 0.5, -4]}],
-        }
-
-  });
   }
 
 
@@ -49,8 +41,8 @@ pickShape(shapeIndex){
   score = this.state.specialIndex === shapeIndex ? score +1 : score;
 
   this.setState({score});
-
-  saveState(score);
+console.log(score)
+  saveState(this.state);
   AsyncStorage.setItem('score', score);
   this.newGameSet();
 }
@@ -84,8 +76,11 @@ newGameSet(){
   render(){
     return(
       <View style={styles.game}>
+      <View>
+      <Login />
+      </View>
         <Text style={styles.text}>Find the Odd One Out!</Text>
-<View style={ this.styles.menu }>
+<View style={styles.menu }>
   <Button  />
 
     <Sound
@@ -126,7 +121,22 @@ const styles = StyleSheet.create({
     transform: [
       {translate: [0, 2, -5]}
     ]
-  }
+  },
+  auth: {
+    fontSize: 0.5,
+    textAlign: 'center',
+    color: '#fff',
+    transform: [
+      {translate: [0,3, -2]}
+    ]
+  },
+  menu: {
+      flex: 1,
+      flexDirection: 'column',
+      width: 1,
+      alignItems: 'stretch',
+      transform: [{translate: [0.5, 0.5, -4]}],
+      }
 });
 
 AppRegistry.registerComponent('ShapeGame', () => ShapeGame)
