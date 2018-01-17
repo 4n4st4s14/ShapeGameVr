@@ -1,26 +1,36 @@
 {
-  "name": "shapegame",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "proxy": "http://localhost.3001",
+  "name": "ShapeGame",
+  "version": "0.0.1",
+  "private": true,
+  "proxy": "http://localhost:3001/",
   "scripts": {
-    "server": "node server.js",
-    "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
-    "build": "node scripts/build.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.12.1"
+    "start": "node -e \"console.log('open browser at http://localhost:8081/vr/\\n\\n');\" && node node_modules/react-native/local-cli/cli.js start",
+    "bundle": "node node_modules/react-vr/scripts/bundle.js",
+    "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
+    "devtools": "react-devtools",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "mongoose": "^4.13.3",
-    "react-scripts": "0.8.5"
+    "firebase": "^4.8.2",
+    "ovrui": "~2.0.0",
+    "re-base": "^3.2.2",
+    "react": "16.0.0",
+    "react-native": "~0.48.0",
+    "react-scripts": "0.8.5",
+    "react-vr": "~2.0.0",
+    "react-vr-web": "~2.0.0",
+    "three": "^0.87.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "babel-preset-react-native": "^1.9.1",
+    "jest": "^19.0.2",
+    "react-devtools": "^2.5.2",
+    "react-test-renderer": "16.0.0",
+    "xopen": "1.0.0"
+  },
+  "jest": {
+    "preset": "react-vr"
   }
 }
